@@ -18,6 +18,7 @@ import {
   USERS_URL,
   PROFILE,
   UNSUBSCRIBE_EMAIL_URL,
+  WELCOME,
 } from "constants/routes";
 import OrganizationLoader from "pages/organization/loader";
 import ApplicationListLoader from "pages/Applications/loader";
@@ -41,6 +42,7 @@ import AnalyticsUtil from "utils/AnalyticsUtil";
 import { trimTrailingSlash } from "utils/helpers";
 import { getSafeCrash, getSafeCrashCode } from "selectors/errorSelectors";
 import UserProfile from "pages/UserProfile";
+import Welcome from "pages/welcome";
 
 const SentryRoute = Sentry.withSentryRouting(Route);
 
@@ -121,6 +123,8 @@ class AppRouter extends React.Component<any, any> {
                   component={UnsubscribeEmail}
                   path={UNSUBSCRIBE_EMAIL_URL}
                 />
+                <SentryRoute component={UserProfile} exact path={PROFILE} />
+                <SentryRoute component={Welcome} path={WELCOME} />
                 <SentryRoute component={PageNotFound} />
               </Switch>
             </>
