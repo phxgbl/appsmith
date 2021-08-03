@@ -1,0 +1,27 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: appsmith-ui
+            client-secret: a0864597-0e3e-455a-b740-26bba05d3db3   
+            authorization-grant-type: authorization_code
+            redirectUri: '{baseUrl}/login/oauth2/code/{registrationId}'
+            scope:
+              - openid
+              - profile
+              - email
+        provider:
+          keycloak:
+            authorization-uri: https://dev.appsmith.com/auth/realms/Adapt/protocol/openid-connect/auth
+            token-uri: https://dev.appsmith.com/auth/realms/Adapt/protocol/openid-connect/token
+            user-info-uri: https://dev.appsmith.com/auth/realms/Adapt/protocol/openid-connect/userinfo
+            jwk-set-uri: https://dev.appsmith.com/auth/realms/Adapt/protocol/openid-connect/certs
+            user-name-attribute: preferred_username
+      resourceserver:
+          jwt:
+            issuer-uri: https://dev.appsmith.com/auth/realms/Adapt
+            jwk-set-uri: https://dev.appsmith.com/auth/realms/Adapt/protocol/openid-connect/certs
+
+  
